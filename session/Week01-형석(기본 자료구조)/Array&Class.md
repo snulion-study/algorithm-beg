@@ -458,7 +458,58 @@ class XYZ{
     + 외부 클래스(class A)의 메소드 내부에 위치하는 클래스로, 지역변수와 같은 성격을 지닌다.
     + 원래 메소드 내에서는 static 멤버를 선언할 수 없듯, static을 붙일 수 없다.
    
+   #### 4. 익명 클래스  
+   ```java
+  public class A{
+      void run(){
+          System.out.println("Please override me!");
+      }
+  }
+  ```
+  ```java
+  public class NestedTest {
+    public static void main(String[] args) {
+        A obj = new A(){
+            @Override
+            public void run(){
+                System.out.println("I'm running!");
+            }
+        };
 
+        obj.run();  // I'm running!  -> 기존 class A의 method인 run()을 객체 생성과 함께 override하였음. 
+
+    }
+  }
+  ```
+  실제 클래스(위의 예시) 뿐만 아니라, 추상 클래스또한 위과 같이 익명 클래스 선언이 가능하다. 
+  ```java
+  interface B{
+    void run();
+  }
+  ```
+  ```java
+    public class NestedTest {
+    public static void main(String[] args) {
+        B obj = new B(){
+            public void run(){
+                System.out.println("I'm running!");
+            }
+        };
+
+        obj.run();  // I'm running!  -> inerface B의 run()을 B 객체 생성과 함께 구현하였음.
+
+    }
+  }
+  ```
+  interface를 사용하는 익명 클래스도 가능하다!  
+  
+  ### Question
+
+<details><summary>Interface와 Abstract Class의 차이는 무엇일까? </summary>
+<p>
+
+</p>
+</details>
   
 
  
