@@ -334,6 +334,132 @@ class XYZ{
  위와같이 클래스를 배열로 선언하여 사용할경우, 유사한 데이터를 따로따로 관리하는 것이 아니라, 배열로써 효율적으로 관리할 수 있게된다.  
  ex) 100명의 신체검사 데이터를 신체검사 클래스의 배열로 사용하면, 각 사람마다 키, 뭄무게, 시력, 이름과 같은 데이터를 모아서 관리할 수 있게된다.
 
+ ### 중첩 클래스
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F99DA873B5AC20B79183F1C">  
+ 
+  #### 들어가기전  
+  ##### Q1. 중첩클래스란 무엇인가?
+  클래스안에 선언된 또 하나의 클래스로써 선언된 위치(종류)에 따라 서로 다른 특징을 가진다.
+
+  ##### Q2. 왜 사용하는가?
+  1. 외부 클래스와 내부 클래스가 서로의 멤버에 접근하기 쉽다.  
+  2. 외부에는 불필요한 클래스를 은닉함으로써 코드의 복잡성을 줄일 수 있다.
+  
+  #### 용어 정리
+ 1. 대표적인 기본서인 '이것은 자바다'에서는 이너 클래스라는 용어를 사용하지 않고 중첩 클래스라는 용어를 이용해 개념을 설명한다. 이너 클래스라는 말은 한번도 나오지 않는다.  
+    + 인스턴스 멤버 클래스  
+    + 정적 멤버 클래스  
+    + 로컬 클래스  
+    + 익명 클래스  
+
+ 2. 반대로 또다른 기본서 '자바의 정석'에서는 이너 클래스라는 용어만 사용한다.
+    + 인스턴스 클래스(instance class)  
+    + 스태틱 클래스(static class)  
+    + 지역 클래스(local class)  
+    + 익명 클래스(anonymous class)  
+    
+ 3. 본 책에서는 다음과 같은 분류로 간단하게 소개되어있다.  
+    + 멤버 클래스(member class)  
+    + 내부 클래스(inner class)  
+    + 지역 클래스(local class)  
+    
+  이하의 내용은 기본서의 개념에 충실하여 작성하고자, 위 두 기본서의 용어를 사용하여 설명하겠다.  
+  
+  #### 1. 인스턴스 클래스( 인스턴스 멤버 클래스 in 이것이 자바다 )  
+  ```java
+  claas A{
+    //field
+    class B {
+                     <= class A의 field 선언부에 선언된 class B는 중첩 클래스 중 '인스턴스 클래스'이다.
+    }
+
+    //constructor
+
+    //method
+  }
+  ```  
+위와 같이 인스턴스 클래스는 field 선언부에 위치한다는 점에서 , 2. 스태틱 클래스와 유사하나, static 선언이 없다.  
+ + 특징  
+    + 외부 클래스(class A)의 '멤버'인 클래스이기 때문에, 외부 클래스의 객체를 생성한 후 내부 클래스의 객체를 생성하여 사용한다.  
+    ```java
+    class Object{
+      int num = 3;
+      class Inner{
+        int innerNum = 4;
+      }
+     }
+    ```  
+    위와 같이 class Object 의 멤버변수인 num에 접근하고자 할때  
+    ```java
+    Object obj = new Object();
+    Object.Inner innerObj = obj.new Inner();
+    System.out.println(obj.num); // 3
+    System.out.println(innerObj.innerNum) // 4
+    ```  
+    이렇게 class A를 참조하는 참조변수 a를 생성한후 a.num으로 접근하는것과 같은 논리.  
+    obj class의 멤버중 하나인 Inner class를 생성하기 위하여, obj.new Inner()를 사용하여 내부 객체를 생성하였다!! 
+    
+    + 인스턴스 내부에는 instance member만 선언할 수 있다. (static 선언 불가) 
+    
+  #### 2. 스태틱 클래스( 정적 멤버 클래스 in 이것이 자바다 )  
+  ```java
+  claas A{
+    //field
+    static class B {
+                     <= class A의 field 선언부에 선언된 static class B는 중첩 클래스 중 '스태틱 클래스'이다.
+    }
+
+    //constructor
+
+    //method
+  }
+  ```
+  + 특징  
+    + statc 키워드가 붙은 내부 클래스이기 때문에, 외부 클래스의 객체를 생성하지 않고 내부 클래스의 객체를 생성할 수 있다.
+    ```java
+    class Object{
+      static int num = 3;
+      static class Inner{
+        int innerNum1 = 4;
+        static int innerNum2 = 5;
+      }
+     }
+    ```  
+    위와 같이 class Object 의 static member인 num에 접근하고자 할때  
+    ```java
+    Object obj = new Object(); // 이런 객체 생성과정 없이
+    System.out.println(Object.num); // 3 이렇게 접근할 수 있듯,
+    Object.Inner innerObj = Object.Inner(); //이렇게 Object객체 생성없이 바로 Inner class 객체 생성가능
+    System.out.println(innerObj.innerNum) // 4
+    Ststem.out.println(Object.Inner.innerNum2) // 스태틱 클래스 안의 static 변수는 Object, Inner객체 모두 없이 접근가능
+    ```  
+    
+    + 인스턴스 내부에는 instance member(위 코드에서 innerNum1) 와 static member(위 코드에서 innerNum2) 모두 생성가능
+    
+   #### 3. 지역 클래스( 로컬 클래스 in 이것이 자바다 )
+   ```java
+    claas A{
+      //field
+
+      //constructor
+
+      //method
+      void method1(){
+        class B {
+          int data = 3;             <= class A의 method 선언부의 method 내부에 선언된 class B는 중첩 클래스 중 '지역 클래스'이다.
+        }
+        
+        B b = new B();              // method1 내부에서 선언된 class B를 참조하는 변수 b를 생성하여 접근한다!    
+        System.out.println(b.data); // 3 
+      }
+    }
+   ```
+  + 특징  
+    + 외부 클래스(class A)의 메소드 내부에 위치하는 클래스로, 지역변수와 같은 성격을 지닌다.
+    + 원래 메소드 내에서는 static 멤버를 선언할 수 없듯, static을 붙일 수 없다.
+   
+
+  
 
  
 - 참고서적: Do it 자료구조와 함께 배우는 알고리즘 입문 자바 편 (이지스퍼블리싱)
