@@ -30,16 +30,15 @@ public class Prob1966 {
                 }
             }
 
-            boolean printTarget = false;
             int print = 0;
 
             // printQue의 max priority 값이 target document의 priority 값보다 큰 경우
             // target document는 출력되지 않고 printQue를 돌 것이다.
-            while (getMax(printQue) > targetPriority) {
+            while (!chkPriority(printQue, targetPriority)) {
 
                 // head 요소가 max priority 값보다 큰 경우
                 // head 요소 제거 + 프린트 횟수 증가 + targetIdx 감소(-1)
-                if (printQue.element() > getMax(printQue)) {
+                if (chkPriority(printQue, printQue.element())) {
                     printQue.remove();
                     print++;
                 }
@@ -57,7 +56,7 @@ public class Prob1966 {
             }   // while문을 마치면 target document의 priority와 max priority 일치
 
             for (int j = 0; j <= targetIdx; j++) {
-                if (printQue.element() == getMax(printQue)) {
+                if (chkPriority(printQue, printQue.element())) {
                     printQue.remove();
                     print++;
                 } else {
@@ -75,7 +74,7 @@ public class Prob1966 {
         System.out.println(sb);
     }
 
-    static int getMax(Queue<Integer> intQue) {
+/*    static int getMax(Queue<Integer> intQue) {
         Iterator<Integer> it = intQue.iterator();
         int max = 0;
         int priority;
@@ -87,5 +86,18 @@ public class Prob1966 {
             }
         }
         return max;
+    }*/
+
+    static boolean chkPriority(Queue<Integer> intQue, int priority) {
+        Iterator<Integer> it = intQue.iterator();
+        boolean chk = true;
+
+        while(it.hasNext()) {
+            if (priority < it.next()) {
+                chk = false;
+                break;
+            }
+        }
+        return chk;
     }
 }
