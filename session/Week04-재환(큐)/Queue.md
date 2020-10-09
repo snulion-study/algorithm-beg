@@ -18,7 +18,7 @@ Fig 1. 스택과 큐 ([https://gohighbrow.com/stacks-and-queues/](https://gohigh
 - **front** or **head** : 데이터를 꺼내는 쪽
 - **rear** or **back** or **tail** :  데이터를 넣는 쪽
 
-<img src="Queue/2.png" alt="Queue/2.png" style="zoom:33%;" />
+<img src="Queue/2.png" width="300" height="300" alt="스택과 큐">
 
 Fig 2. enqueue와 dequeue, front와 back
 
