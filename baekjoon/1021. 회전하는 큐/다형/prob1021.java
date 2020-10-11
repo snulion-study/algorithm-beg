@@ -1,5 +1,3 @@
-// 오류
-
 package chap04;
 import java.util.Scanner;
 import java.util.LinkedList;
@@ -24,33 +22,28 @@ public class prob1021 {
 		}
 		
 		for(int i=0; i<M ; i++) { // M개 뽑으므로 M번 반복하면 됨.
-		
-			// 현재 리스트의 값 = 뽑아내려는 값일 경우  
-			if(arr[i] == list.peek()) {
-				list.remove();
-				continue;
+			while(true){
+				// 현재 리스트의 값 = 뽑아내려는 값일 경우  
+				if(arr[i] == list.peek()) {
+					list.remove();
+					break;
+				}
+
+				if(list.indexOf(arr[i]) <= list.size()/2 ) {
+					// 왼쪽으로 한칸씩 밀기 - 현재값 제거하고 마지막에 넣기
+					int goleft = list.remove();
+					list.add(goleft);
+					cnt++;
+				}
+
+				else {
+					// 오른쪽으로 한칸씩 밀기 -> 마지막  값 제거하고 처음에 넣기  
+					int goright = list.remove(list.size()-1);
+					list.add(0, goright); //처음에 값 넣는 법  
+					cnt++;
+				}
 			}
-		
-			else {
-				do {
-					if(list.indexOf(arr[i]) <= list.size()/2 ) {
-						// 왼쪽으로 한칸씩 밀기 - 현재값 제거하고 마지막에 넣기
-						int goleft = list.remove();
-						list.add(goleft);
-						cnt++;
-					}
-					
-					else {
-						// 오른쪽으로 한칸씩 밀기 -> 마지막  값 제거하고 처음에 넣기  
-						int goright = list.remove(list.size()-1);
-						list.add(0, goright); //처음에 값 넣는 법  
-						cnt++;
-					}
-				
-				} while(arr[i] != list.peek());
-			}
-			
-		}
+		} 
 		System.out.println(cnt);
 	}
 }
