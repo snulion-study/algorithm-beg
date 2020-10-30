@@ -16,10 +16,6 @@ public class Prob2164 {
 
         while (cardQue.size() != 1) {
             cardQue.remove();
-            if (cardQue.size() == 1) {
-                System.out.println(cardQue.element());
-                return;
-            }
             cardQue.add(cardQue.remove());
         }
 
