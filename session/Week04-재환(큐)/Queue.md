@@ -1,8 +1,4 @@
-# 알고리즘
-
 # 4-2. 큐(Queue)
-
----
 
 ## 1. 큐란?
 
@@ -22,7 +18,6 @@ Fig 1. 스택과 큐 ([https://gohighbrow.com/stacks-and-queues/](https://gohigh
 
 Fig 2. enqueue와 dequeue, front와 back
 
----
 
 ## 2. 배열로 큐 만들기
 
@@ -49,8 +44,6 @@ Fig 3. Array-Based Queue
 - enqueue operation?
 
     **Θ(1) time :** 배열의 마지막 요소로 추가
-
----
 
 ## 3. 링 버퍼로 큐 만들기
 
@@ -113,7 +106,6 @@ Fig 3. Array-Based Queue
     }
     ```
 
----
 
 ### 큐 클래스
 
@@ -251,7 +243,6 @@ class LastNElements {
 a[cnt++ % N] = stdIn.nextInt();                  // 값을 덮어 씌운다.
 ```
 
----
 
 ## 자바에서 큐를 사용해보자
 
