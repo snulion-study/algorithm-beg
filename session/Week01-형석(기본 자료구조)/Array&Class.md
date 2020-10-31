@@ -16,6 +16,8 @@
   2. 클래스(89p)
       - 클래스란?
       - 클래스의 배열
+      - 중첩 클래스
+      - Abstract Class와 Interface
   
   ### 자료구조
   > 데이터 단위와 데이터 자체 사이의 물리적 또는 논리적인 관계
@@ -503,14 +505,100 @@ class XYZ{
   ```
   interface를 사용하는 익명 클래스도 가능하다!  
   
-  ### Question
-
-<details><summary>Interface와 Abstract Class의 차이는 무엇일까? </summary>
-<p>
-
-</p>
-</details>
+  ### Question  
+  #### Abstract Class와 Interface의 차이는 무엇일까?  
+  Oricle 공식문서에 따른 설명.  
+  <a href="https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html">Abstract Methods and Classes</a>  
+  <a href="https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html">Interfaces</a>  
   
+  사실 읽어봐도 비슷한 얘기를 한다. 실행해야할 Method들을 미리 선언한, skeleton code인 느낌인데 왜 종류가 두가지나 되는걸까?  
+  
+  ##### 정리하자면  
+  + Abstract Class와 Interface의 공통점  
+    + Abstract Class와 Interface모두 선언만 있고, 구현 내용은 없는 클래스다!  
+    + Abstract Class와 Interface로 객체를 생성할 수 없다! (Abstract Class인 Object 클래스로 Object obj = new Object(); 불가능)  
+    + Abstract Class를 extends한 자식들과, Interface를 implements하고 Abstract method를 구현한 자식들은 객체를 생성할 수 있다!  
+  + Abstract Class와 Interface의 차이점  
+    + Abstract Class는 단일 상속을 한다. 반면 Interface는 다중 상속이 가능하다!(extends는 1개만, implements는 여러개 가능)  
+    + Abstract Class의 목적은 부모 Class를 상속받아서 기능을 확장시키는 것!  
+    + Interface의 목적은 Interface에 정의된 method들을 꼭 구현하도록 강제하는 것!  
+    
+  코드를 통하여 이해하여 보자  
+  + Abstract Class의 생성 및 사용 
+  ```java
+  public abstract class AnimalAbstract {
+    String age = 3;                //abstract class 또한 일반 class와 같이 필드값을 가질 수 있다.
+    public abstract void sound();  //abstract가 들어간 method들을 abstract method, 추상 메서드라고 부른다!
+    public void age(){                        //Interface와 다르게 일반 method 또한 생성할 수 있다.
+      System.out.println("저는 " + age + "살입니다");
+    }
+  }
+  
+  // 위 Abstract Class를 extends 하는 Class 만들기
+  public class Animal extends AnimalAbstract{  //AnimalAbstract에서 Abstract Method로 구현한 sound() method를 구현해야함!
+    String crawl;
+    
+    Animal(String crawl){
+      this.crawl = crawl;
+    }
+    
+    @Override                            //AnimalAbstract에서 Abstract method로 구현된 sound() method 구현.
+    public void sound(){
+      System.out.println(crawl);
+    } 
+  }
+  
+  // Animal Instance를 만들기
+  public class Test{
+    public static void main(String[] args){
+      Animal dog = new Animal("멍멍");  // AnimalAbstarct를 상속받은 Animal 객체 생성
+      //AnimalAbstract dog2 = new AnimalAbstract(); //Abstract Class 자체로 객세생성 불가능!
+      
+      dog.age();   // AnimalAbstract class에 선언된 일반 method 사용가능.
+      dog.sound(); // AnimalAbstract class에서 Abstract method를 Override한 Animal class 의 sound() method실행
+    
+    }
+  }
+  ```
+  
+  + Interface의 생성
+  ```java
+  public interface AnimalInterface {
+    int MIN = 3;   // interface는 static final 필드만 가질 수 있다 static final은 값이 변하지 않으므로 상수라고 함, 대문자로 쓰는게 관례
+                   // interface의 경우 모든 field가 static final이기 때문에 작성하지 않아도 컴파일 과정에서 추가된다!
+    void sound();  // sound() method는 abstract method라 위에서와 같이 abstract 예약어를 써줘야할 것 같지만,
+                   // interface의 경우 모든 method가 abstrat method이기 때문에 작성하지 않아도 컴파일 과정에서 추가된다!
+  }
+  
+  // 위 Inteface를 implements 하는 Class 만들기
+  public class Animal implements AnimalInterface {   //AnimalInterface에서 Abstract Method로 구현한 sound() method를 구현해야함!
+    Stirng crawl;
+    
+    Animal(String crawl){
+      this.crawl = crawl;
+    }
+    
+    @Override
+    public void sound(){
+      System.out.println(crawl);
+    }
+  }
+  
+  //위 Abstract class를 extends한 Animal class와 위의 interface를 implements한 Animal class의 생김새는 거의 똑같다!
+  
+  //Animal Instance를 만들기
+  public class Test{
+    public static void main(String[] args){
+      Animal dog = new Animal("멍멍");  // AnimalInterface를 구현한 Animal 객체 생성
+      //AnimalAbstract dog2 = new AnimalAbstract(); // Interface 자체로 객세생성 불가능!
+      
+      dog.sound(); // AnimalInterface에서 Abstract method를 Override한 Animal class 의 sound() method실행
+    }
+  }
+  ```
+  
+  위 두가지 Abstract Method를 만드는 방법을 통하여 더욱 풍부한 Class 구성을 할 수 있드리라 기대한다!  
+    
 
  
 - 참고서적: Do it 자료구조와 함께 배우는 알고리즘 입문 자바 편 (이지스퍼블리싱)
