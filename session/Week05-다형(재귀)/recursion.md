@@ -54,7 +54,7 @@ class Factorial {
 
 - 재귀 호출(recursive call)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6b953fa5-26e8-4959-b669-2250c28a4a73/factorial_recursive_call.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6b953fa5-26e8-4959-b669-2250c28a4a73/factorial_recursive_call.gif)
+<div><img src="https://user-images.githubusercontent.com/55521320/97769832-8b76b880-1b71-11eb-85a1-3b59ba3ff788.gif" width ="50%"></img></div>
 
 factorial(n)은 n-1의 팩토리얼 값을 구하기 위해 다시 factorial 메서드를 호출함.
 
@@ -70,7 +70,8 @@ factorial(n)은 n-1의 팩토리얼 값을 구하기 위해 다시 factorial 메
 
 간접 재귀: 함수 a가 함수 b를 호출하고 b는 a를 호출. 다른 함수를 통해 간접적으로 재귀 함수의 이름을 호출한다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cf9b96b-2755-4e45-aee1-94a7620063f5/indirect_direct.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cf9b96b-2755-4e45-aee1-94a7620063f5/indirect_direct.jpg)
+<div><img src="https://user-images.githubusercontent.com/55521320/97769904-ec9e8c00-1b71-11eb-9e9d-68aa3d0f1d42.jpg" width="50%"></img></div>
+
 
 ### 유클리드 호제법
 
