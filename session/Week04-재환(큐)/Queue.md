@@ -18,7 +18,6 @@ Fig 1. 스택과 큐 ([https://gohighbrow.com/stacks-and-queues/](https://gohigh
 
 Fig 2. enqueue와 dequeue, front와 back
 
-
 ## 2. 배열로 큐 만들기
 
 ![Queue/3.png](Queue/3.png)
@@ -105,8 +104,6 @@ Fig 3. Array-Based Queue
         }
     }
     ```
-
-
 ### 큐 클래스
 
 큐를 관리하는 클래스로, 아래와 같이 5(4)개의 필드로 구성된다
@@ -200,9 +197,6 @@ Fig 3. Array-Based Queue
         return x;
     }
 ```
-
----
-
 ### 링 버퍼의 활용
 
 링 버퍼는 '오래된 데이터를 버리는' 용도로 사용 가능하다. 예를 들어 요소의 개수가  n인 배열에 계속해서 데이터가 입력될 때 가장 최근에 들어온 n개만 저장하고 오래된 데이터는 버리는 용도로 사용한다.
@@ -242,8 +236,6 @@ class LastNElements {
 ```java
 a[cnt++ % N] = stdIn.nextInt();                  // 값을 덮어 씌운다.
 ```
-
-
 ## 자바에서 큐를 사용해보자
 
 ```jsx
@@ -539,21 +531,21 @@ class GfG {
   
         // Printing the top element of 
         // the LinkedList 
-        System.out.println(ll.peek()); 
+        System.out.println(ll.peek());
   
         // Printing the top element and removing it 
         // from the LinkedList container 
-        System.out.println(ll.poll()); 
+        System.out.println(ll.poll());
   
         // Printing the top element again 
-        System.out.println(ll.peek()); 
+        System.out.println(ll.peek());
     } 
 }
 
 //Output
-10
-10
-20
+// 10
+// 10
+// 20
 ```
 
 ### PriorityBlockingQueue
