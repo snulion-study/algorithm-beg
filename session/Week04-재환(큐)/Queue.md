@@ -531,14 +531,14 @@ class GfG {
   
         // Printing the top element of 
         // the LinkedList 
-        System.out.println(ll.peek()); 
+        System.out.println(ll.peek());
   
         // Printing the top element and removing it 
         // from the LinkedList container 
-        System.out.println(ll.poll()); 
+        System.out.println(ll.poll());
   
         // Printing the top element again 
-        System.out.println(ll.peek()); 
+        System.out.println(ll.peek());
     } 
 }
 
