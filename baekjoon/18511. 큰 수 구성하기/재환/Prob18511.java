@@ -10,7 +10,5 @@ public class Prob18511 {
 
         int number = Integer.parseInt(stk.nextToken());
         int elements = Integer.parseInt(stk.nextToken());
-
-        
     }
 }
