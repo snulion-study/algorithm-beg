@@ -15,6 +15,7 @@ public class Prob10814 {
             this.name = name;
             this.order = order;
         }
+
     }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
