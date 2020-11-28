@@ -27,30 +27,30 @@ public class Prob2108 {
         return (int)Math.round((double)sum/a.length);
     }
 
-    static void sort(int[] a, int l, int r){
-        int mid = l+r/2;
-        swap(a, mid, r);
-        int k = partition(a, l-1, r+1, a[r]);
-        swap(a, k, r);
-        if((k-l)>1) sort(a, l, k-1);
-        if((r-k)>1) sort(a, k+1, r);
-    }
-
-    static void swap(int[] arr, int a, int b){
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
-    }
-
-    static int partition(int[] arr, int l, int r, int target){
-        do{
-            while(arr[++l] < target);
-            while(arr[--r] > target);
-            swap(arr, l ,r);
-        }while(l < r);
-        swap(arr, l, r);
-        return l;
-    }
+//    static void sort(int[] a, int l, int r){
+//        int mid = l+r/2;
+//        swap(a, mid, r);
+//        int k = partition(a, l-1, r+1, a[r]);
+//        swap(a, k, r);
+//        if((k-l)>1) sort(a, l, k-1);
+//        if((r-k)>1) sort(a, k+1, r);
+//    }
+//
+//    static void swap(int[] arr, int a, int b){
+//        int temp = arr[a];
+//        arr[a] = arr[b];
+//        arr[b] = temp;
+//    }
+//
+//    static int partition(int[] arr, int l, int r, int target){
+//        do{
+//            while(arr[++l] < target);
+//            while(arr[--r] > target);
+//            swap(arr, l ,r);
+//        }while(l < r);
+//        swap(arr, l, r);
+//        return l;
+//    }
 
     static int many(int[] arr){
         if(arr.length == 1)
