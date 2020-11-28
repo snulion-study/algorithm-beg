@@ -13,9 +13,9 @@ public class Prob2108 {
         }
 
         quickSort(arr, 0, N - 1);
-        System.out.println((int) average(arr));               // 산술평균 출력
+        System.out.println((int) average(arr));         // 산술평균 출력
         System.out.println(arr[N / 2]);                 // 중앙값 출력
-        System.out.println(frequency(arr));                           // 최빈값 출력
+        System.out.println(frequency(arr));             // 최빈값 출력
         System.out.println(arr[N - 1] - arr[0]);        // 최댓값과 최솟값의 차이 출력
     }
 
@@ -56,6 +56,7 @@ public class Prob2108 {
         }
 
         int[] fre = new int[]{4001, 4001};        // first, second
+        // -2, -2, -1, -1
         int most = 0;
         int idx = 0;
 
@@ -74,6 +75,7 @@ public class Prob2108 {
                 most = freq;
             }
 
+            // 수정 필요
             else if (most == freq) {
                 if (fre[0] > arr[idx - 1]) {
                     fre[1] = fre[0];
