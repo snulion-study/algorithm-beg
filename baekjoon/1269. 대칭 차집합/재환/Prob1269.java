@@ -28,6 +28,7 @@ public class Prob1269 {
                 setB.add(newInt);
             }
         }
+
         System.out.println(setA.size() + setB.size());
     }
 }
