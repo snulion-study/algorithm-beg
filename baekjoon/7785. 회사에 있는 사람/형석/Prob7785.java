@@ -23,7 +23,7 @@ public class Prob7785 {
                 hs.remove(name);
         }
 
-        Object[] result = hs.toArray();
+        String[] result = hs.toArray();
         Arrays.sort(result);
         for(int i = result.length-1; i >= 0; i--)
             System.out.println(result[i]);
