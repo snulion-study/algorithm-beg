@@ -14,8 +14,6 @@ public class Prob18511 {
 
         int number = Integer.parseInt(stk.nextToken());
         int elements = Integer.parseInt(stk.nextToken());
-<<<<<<< HEAD
-=======
         stk = new StringTokenizer(br.readLine());
 
         int[] numSet = new int[elements];
@@ -39,6 +37,5 @@ public class Prob18511 {
         for (int i = numSet.length - 1; i >= 0; i--) {
             biggerNum(n * 10 + numSet[i], limNum, numSet);
         }
->>>>>>> 315f67fdf3c50d809238ec96032feae334f9a289
     }
 }
